@@ -18,12 +18,12 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": [
-    ".eslintrc.cjs",
-    "vitest.config.ts",
-    "src"
-  ],
+  "include": [".eslintrc.cjs", "vitest.config.ts", "src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
