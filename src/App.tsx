@@ -16,12 +16,16 @@ export function App() {
 export function WrappedApp() {
   return (
     <BrowserRouter>
-      <ul>
+      <ul className="flex gap-3">
         <li>
-          <Link to="/">Home</Link>
+          <Link className="text-lg font-semibold text-blue-400" to="/">
+            Home
+          </Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link className="text-lg font-semibold text-blue-400" to="/about">
+            About
+          </Link>
         </li>
       </ul>
       <App />
