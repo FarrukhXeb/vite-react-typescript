@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import Button from '@/components/Button';
 
-export interface Item {
-  id: number;
-  title: string;
-  children?: Item[];
-}
-export interface ListItemProps {
+interface ListItemProps {
   item: Item;
   level: number;
 }

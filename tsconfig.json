@@ -24,6 +24,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": [".eslintrc.cjs", "vitest.config.ts", "src"],
+  "include": [".eslintrc.cjs", "vitest.config.ts", "src", "types.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

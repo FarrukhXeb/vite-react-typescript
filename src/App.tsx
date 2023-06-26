@@ -1,34 +1,48 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Home from '@/pages/Home';
-import NotFound from '@/pages/NotFound';
-import About from '@/pages/About';
+import { Suspense, lazy } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MainLayout from './components/Layouts/MainLayout';
+
+const Home = lazy(() => import('@/pages/Home'));
+const NotFound = lazy(() => import('@/pages/NotFound'));
+const About = lazy(() => import('@/pages/About'));
 
 export function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="*" element={<NotFound />} />
+      <Route
+        path="/"
+        element={
+          <MainLayout>
+            <Home />
+          </MainLayout>
+        }
+      />
+      <Route
+        path="/about"
+        element={
+          <MainLayout>
+            <About />
+          </MainLayout>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <MainLayout>
+            <NotFound />
+          </MainLayout>
+        }
+      />
     </Routes>
   );
 }
 
 export function WrappedApp() {
   return (
-    <BrowserRouter>
-      <ul className="flex gap-3">
-        <li>
-          <Link className="text-lg font-semibold text-blue-400" to="/">
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link className="text-lg font-semibold text-blue-400" to="/about">
-            About
-          </Link>
-        </li>
-      </ul>
-      <App />
-    </BrowserRouter>
+    <Suspense fallback={<h2>Loading...</h2>}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Suspense>
   );
 }
