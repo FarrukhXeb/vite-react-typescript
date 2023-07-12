@@ -1,11 +1,7 @@
-import { ReactNode, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, Outlet } from 'react-router-dom';
 
-type Props = {
-  children: ReactNode;
-};
-
-function MainLayout({ children }: Props) {
+function MainLayout() {
   const [darkMode, setDarkMode] = useState(false);
   const linkClassName = 'text-lg font-semibold text-blue-400 dark:text-white';
   return (
@@ -24,7 +20,7 @@ function MainLayout({ children }: Props) {
               </Link>
             </li>
           </ul>
-          <div>
+          <div className="flex gap-3">
             <button
               className="text-black dark:text-white"
               type="button"
@@ -32,6 +28,18 @@ function MainLayout({ children }: Props) {
             >
               {darkMode ? 'Light Mode' : 'Dark Mode'}
             </button>
+            <ul className="flex gap-3">
+              <li>
+                <Link className={linkClassName} to="/login">
+                  Login
+                </Link>
+              </li>
+              <li>
+                <Link className={linkClassName} to="/register">
+                  Register
+                </Link>
+              </li>
+            </ul>
           </div>
         </nav>
       </header>
@@ -39,7 +47,9 @@ function MainLayout({ children }: Props) {
         <aside className="bg-white shadow-xl dark:bg-zinc-500 md:min-w-[200px]">
           Sidebar
         </aside>
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          <Outlet />
+        </main>
       </div>
     </div>
   );

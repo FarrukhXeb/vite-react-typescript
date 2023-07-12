@@ -1,14 +1,12 @@
-import { ReactNode } from 'react';
+import { Outlet } from 'react-router-dom';
 
-type Props = {
-  children: ReactNode;
-};
-
-function AuthLayout({ children }: Props) {
+function AuthLayout() {
   return (
     <section className="layout">
       <aside className="right-panel">
-        <main>{children}</main>
+        <main>
+          <Outlet />
+        </main>
       </aside>
     </section>
   );
